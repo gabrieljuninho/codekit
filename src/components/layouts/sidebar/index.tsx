@@ -26,7 +26,7 @@ const AppSidebar: FC<ComponentProps<typeof Sidebar>> = ({ ...props }) => {
             alt="Logo"
             width={28}
             height={28}
-            loading="lazy"
+            priority
           />
           <span
             className={cn(
