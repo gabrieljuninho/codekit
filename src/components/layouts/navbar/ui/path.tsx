@@ -21,13 +21,7 @@ import { useSidebar } from "@/components/ui/sidebar";
 
 const Path = () => {
   const pathname = usePathname();
-  const path = pathname
-    .split("/")
-    .filter(Boolean)
-    .map(
-      (segment) =>
-        segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase()
-    );
+  const path = pathname.split("/").filter(Boolean);
 
   const { isMobile } = useSidebar();
 
@@ -36,17 +30,26 @@ const Path = () => {
       <BreadcrumbList>
         {path.length === 1 && (
           <BreadcrumbItem>
-            <BreadcrumbPage>{path[0]}</BreadcrumbPage>
+            <BreadcrumbPage>
+              {path[0].charAt(0).toUpperCase() + path[0].slice(1).toLowerCase()}
+            </BreadcrumbPage>
           </BreadcrumbItem>
         )}
 
         {path.length === 2 && (
           <>
             <BreadcrumbItem>
-              <BreadcrumbLink href={`/${path[0]}`}>{path[0]}</BreadcrumbLink>
+              <BreadcrumbLink href={`/${path[0].toLowerCase()}`}>
+                {path[0].charAt(0).toUpperCase() +
+                  path[0].slice(1).toLowerCase()}
+              </BreadcrumbLink>
             </BreadcrumbItem>
+            <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{path[1]}</BreadcrumbPage>
+              <BreadcrumbPage>
+                {path[1].charAt(0).toUpperCase() +
+                  path[1].slice(1).toLowerCase()}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}
@@ -54,7 +57,10 @@ const Path = () => {
         {path.length >= 3 && (
           <>
             <BreadcrumbItem>
-              <BreadcrumbLink href={`/${path[0]}`}>{path[0]}</BreadcrumbLink>
+              <BreadcrumbLink href={`/${path[0].toLowerCase()}`}>
+                {path[0].charAt(0).toUpperCase() +
+                  path[0].slice(1).toLowerCase()}
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
 
@@ -70,9 +76,13 @@ const Path = () => {
                       {path.slice(1, -1).map((segment, index) => (
                         <DropdownMenuItem key={index}>
                           <BreadcrumbLink
-                            href={`/${path.slice(0, index + 2).join("/")}`}
+                            href={`/${path
+                              .slice(0, index + 2)
+                              .join("/")
+                              .toLowerCase()}`}
                           >
-                            {segment}
+                            {segment.charAt(0).toUpperCase() +
+                              segment.slice(1).toLowerCase()}
                           </BreadcrumbLink>
                         </DropdownMenuItem>
                       ))}
@@ -86,9 +96,13 @@ const Path = () => {
                 <>
                   <BreadcrumbItem>
                     <BreadcrumbLink
-                      href={`/${path.slice(0, index + 2).join("/")}`}
+                      href={`/${path
+                        .slice(0, index + 2)
+                        .join("/")
+                        .toLowerCase()}`}
                     >
-                      {segment}
+                      {segment.charAt(0).toUpperCase() +
+                        segment.slice(1).toLowerCase()}
                     </BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
@@ -97,7 +111,10 @@ const Path = () => {
             )}
 
             <BreadcrumbItem>
-              <BreadcrumbPage>{path[path.length - 1]}</BreadcrumbPage>
+              <BreadcrumbPage>
+                {path[path.length - 1].charAt(0).toUpperCase() +
+                  path[path.length - 1].slice(1).toLowerCase()}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

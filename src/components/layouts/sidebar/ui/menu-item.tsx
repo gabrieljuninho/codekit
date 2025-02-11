@@ -12,7 +12,7 @@ const MenuItem: FC<IMenuItemProps> = ({ title, href, icon }) => {
   const pathname = usePathname();
   const url = new URL(href, process.env.NEXT_PUBLIC_APP_URL!);
 
-  const isActive = pathname === url.pathname;
+  const isActive = pathname.startsWith(url.pathname);
 
   return (
     <SidebarMenuItem>

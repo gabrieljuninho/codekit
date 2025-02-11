@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { LogOut, Settings, User } from "lucide-react";
+import { LogOut } from "lucide-react";
 
 import { ACCOUNT } from "@/common/mock/account";
 
@@ -10,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -41,21 +39,6 @@ const NavUser = () => {
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href="/profile" className="flex w-full items-center">
-              <User />
-              <span>Profile</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/settings" className="flex w-full items-center">
-              <Settings />
-              <span>Settings</span>
-            </Link>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOut />

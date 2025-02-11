@@ -13,7 +13,7 @@ const AppLayout: FC<PropsWithChildren> = ({ children }) => {
       <AppSidebar />
       <SidebarInset>
         <Navbar />
-        <div className="p-4 pt-2">{children}</div>
+        <div className="px-4">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );

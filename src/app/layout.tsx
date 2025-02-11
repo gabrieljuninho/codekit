@@ -5,6 +5,8 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { geistSans } from "@/lib/fonts";
 
+import { ThemeProvider } from "@/components/providers/theme-provider";
+
 import { PropsWithChildren } from "@/types/components";
 
 export const metadata: Metadata = {
@@ -14,8 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
-      <body className={cn("font-geist", geistSans.variable)}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn("font-geist", geistSans.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
